@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Print Page Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="style.css" /> -->
+
+
+    <style>
+        body {
+            background: rgb(204, 204, 204);
+        }
+
+        page[size="A4"] {
+            background: white;
+            width: 21cm;
+            height: 29.7cm;
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 0.5cm;
+            /* box-shadow: 0 0 0.5cm rgba(0,0,0,0.5); */
+            /* border: 1.25cm solid #000; */
+        }
+
+        @media print {
+            body,
+            page[size="A4"] {
+                margin: 0;
+                box-shadow: 0;
+            }
+        }
+
+        .label {
+            font-size: 11px;
+            padding: 10px 0 0 10px;
+        }
+
+        .inline {
+            display: inline-block;
+        }
+
+        .title {
+            font-size: 13px;
+        }
+
+        .lines {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        #table-example-1 { 
+  border: solid thin; 
+  border-collapse: collapse; 
+}
+#table-example-1 caption { 
+  padding-bottom: 0.5em; 
+}
+#table-example-1 th, 
+#table-example-1 td { 
+  border: solid thin;
+  padding: 0.5rem 2rem;
+}
+#table-example-1 td {
+  white-space: nowrap;
+}
+#table-example-1 th { 
+  font-weight: normal; 
+}
+#table-example-1 td { 
+  border-style: none solid; 
+  vertical-align: top; 
+}
+#table-example-1 th { 
+  padding: 0.2em; 
+  vertical-align: middle; 
+  text-align: center; 
+}
+
+#table-example-1 tbody td:first-child::after { 
+  content: leader(". "); '
+}
+
+body {
+  padding: 1rem;
+}
+    </style>
+</head>
+
+<body>
+    <page size="A4">
+        <table style="width:100%">
+            <tr>
+                <th class="label inline" style="margin-left:30px; margin-top:-10px;">ශාඛාව/கிளை/Branch</th>
+                <th class="title inline" style="margin-left:420px;margin-top:5px">එල්. බී. ෆිනෑන්ස් පී. එල්. සී.
+                    </br>
+                    <p style="margin-top:-1px;margin-left:-80px">LB Finance PLC</p>
+
+                </th>
+            </tr>
+            <tr>
+            </tr>
+        </table>
+        <div style="width:170px;height:30px;border:1px solid #000;margin-left:10px;margin-top:-12px"></div>
+        <h1 class="title inline" style="margin-left:300px; margin-top:-40px;font-size:16px">වාර ණය පහසුකම්</h1>
+        <h1 class="title inline" style="margin-left:230px; margin-top:-150px;font-size:18px">தவணை கடன் வசதி ஒப்பந்தம்</h1>
+        <h1 class="title inline" style="margin-left:230px; margin-top:-10px;font-size:18px">TERM LOAN FACILITY AGREEMENT</h1>
+
+
+        <table class="" style="width:100%;">
+            <tr class="lines">
+                <th class="label inline lines" style="padding:5px 50px 50px 10px;margin-left:10px; ">පත්‍රිකා අංක//Ticket No</th>
+                <th class="label inline " style="margin-left:30px;">1. දිනය/Date</th>
+                <th class="label inline " style="margin-left:30px;">වේලාව/Time</th>
+            </tr>
+            <tr>
+            </tr>
+        </table>
+
+<table id="table-example-1"><caption>Specification values: <b>Steel</b>, <b>Castings</b>,</caption>
+   <thead><tr><th rowspan="2">Grade.</th>
+     <th rowspan="2">Yield Point.</th>
+     <th colspan="2">Ultimate tensile strength</th>
+     <th rowspan="2">Per cent elong. 50.8&nbsp;mm or&nbsp;2&nbsp;in.</th>
+     <th rowspan="2">Per cent reduct. area.</th>
+    </tr><tr><th>kg/mm<sup>2</sup></th>
+     <th>lb/in<sup>2</sup></th>
+    </tr></thead><tbody><tr><td>Hard</td>
+     <td>0.45 ultimate</td>
+     <td>56.2</td>
+     <td>80,000</td>
+     <td>15</td>
+     <td>20</td>
+    </tr><tr><td>Medium</td>
+     <td>0.45 ultimate</td>
+     <td>49.2</td>
+     <td>70,000</td>
+     <td>18</td>
+     <td>25</td>
+    </tr><tr><td>Soft</td>
+     <td>0.45 ultimate</td>
+     <td>42.2</td>
+     <td>60,000</td>
+     <td>22</td>
+     <td>30</td>
+    </tr></tbody></table>
+
+
+    </page>
+</body>
+
+</html>
