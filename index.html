@@ -1,258 +1,232 @@
+@using EclipsePrint.Models
+@model EclipsePrint.Models.Ticket
 <!DOCTYPE html>
 <html>
-
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Print Page Template</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="stylesheet" type="text/css" media="screen" href="style.css" /> -->
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Print Page Template</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- <link rel="stylesheet" type="text/css" media="screen" href="style.css" /> -->
+	<style>
+	body {
+		background: rgb(204, 204, 204);
+	}
 
+	page[size="A4"] {
+		background: white;
+		width: 21cm;
+		height: 29.7cm;
+		display: block;
+		margin: 0 auto;
+		margin-bottom: 0.5cm;
+		/* box-shadow: 0 0 0.5cm rgba(0,0,0,0.5); */
+		/* border: 1.25cm solid #000; */
+	}
 
-    <style>
-        body {
-            background: rgb(204, 204, 204);
-        }
+	@@media print {
+		body,
+		page[size="A4"] {
+			margin: 0;
+			box-shadow: 0;
+		}
+	}
 
-        page[size="A4"] {
-            background: white;
-            width: 21cm;
-            height: 29.7cm;
-            display: block;
-            margin: 0 auto;
-            margin-bottom: 0.5cm;
-            /* box-shadow: 0 0 0.5cm rgba(0,0,0,0.5); */
-            /* border: 1.25cm solid #000; */
-        }
+	.label {
+		font-size: 11px;
+		padding: 10px 0 0 10px;
+	}
 
-        @media print {
-            body,
-            page[size="A4"] {
-                margin: 0;
-                box-shadow: 0;
-            }
-        }
+	.inline {
+		display: inline-block;
+	}
 
-        .label {
-            font-size: 11px;
-            padding: 10px 0 0 10px;
-        }
+	.title {
+		font-size: 13px;
+	}
 
-        .inline {
-            display: inline-block;
-        }
+	.lines {
+		border: 1px solid black;
+		border-collapse: collapse;
+	}
 
-        .title {
-            font-size: 13px;
-        }
+	#table-example-1 {
+		border: solid thin;
+		border-collapse: collapse;
+		margin-left: 50px;
+	}
 
-        .lines {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
+	#table-example-1 caption {
+		padding-bottom: 0.5em;
+	}
 
-        #table-example-1 {
-            border: solid thin;
-            border-collapse: collapse;
-            margin-left: 50px;
-        }
+	#table-example-1 th,
+	#table-example-1 td {
+		border: solid thin;
+		padding: 0.5rem 1.5rem;
+	}
 
-        #table-example-1 caption {
-            padding-bottom: 0.5em;
-        }
+	#table-example-1 td {
+		white-space: nowrap;
+	}
 
-        #table-example-1 th,
-        #table-example-1 td {
-            border: solid thin;
-            padding: 0.5rem 2rem;
-        }
+	#table-example-1 th {
+		font-weight: normal;
+	}
 
-        #table-example-1 td {
-            white-space: nowrap;
-        }
+	#table-example-1 td {
+		border-style: none solid;
+		vertical-align: top;
+	}
 
-        #table-example-1 th {
-            font-weight: normal;
-        }
+	#table-example-1 th {
+		padding: 0.2em;
+		vertical-align: middle;
+		text-align: center;
+	}
 
-        #table-example-1 td {
-            border-style: none solid;
-            vertical-align: top;
-        }
+	#table-example-1 tbody td:first-child::after {
+		content: leader(". ");
+	}
 
-        #table-example-1 th {
-            padding: 0.2em;
-            vertical-align: middle;
-            text-align: center;
-        }
-
-        #table-example-1 tbody td:first-child::after {
-            content: leader(". ");
-        }
-
-        body {
-            padding: 1rem;
-        }
-    </style>
+	body {
+		padding: 1rem;
+	}
+    .pad{
+        padding: 20px;
+    }
+</style>
 </head>
-
 <body>
-    <page size="A4">
-        <table style="width:100%">
-            <tr>
-                <th class="label inline" style="margin-left:30px; margin-top:-10px;">ශාඛාව/கிளை/Branch</th>
-                <th class="title inline" style="margin-left:420px;margin-top:5px">එල්. බී. ෆිනෑන්ස් පී. එල්. සී.
-                    </br>
-                    <p style="margin-top:-1px;margin-left:-80px">LB Finance PLC</p>
+	<page size="A4">
+		<table style="width:100%">
+			<tr>
+				<th class="label inline" style="margin-left:30px; margin-top:-10px;">ශාඛාව/கிளை/Branch</th>
+				<th class="title inline" style="margin-left:420px;margin-top:5px">එල්. බී. ෆිනෑන්ස් පී. එල්. සී.
+				</br>
+				<p style="margin-top:-1px;margin-left:-80px">LB Finance PLC</p>
 
-                </th>
-            </tr>
-            <tr>
-            </tr>
-        </table>
-        <div style="width:170px;height:30px;border:1px solid #000;margin-left:10px;margin-top:-12px"></div>
-        <h1 class="title inline" style="margin-left:300px; margin-top:-40px;font-size:16px">වාර ණය පහසුකම්</h1>
-        <h1 class="title inline" style="margin-left:230px; margin-top:-150px;font-size:18px">தவணை கடன் வசதி ஒப்பந்தம்</h1>
-        <h1 class="title inline" style="margin-left:230px; margin-top:-10px;font-size:18px">TERM LOAN FACILITY AGREEMENT</h1>
+			</th>
+		</tr>
+		<tr>
+		</tr>
+	</table>
+	<div style="width:170px;height:30px;border:1px solid #000;margin-left:10px;margin-top:-12px"></div>
+	<h1 class="title inline" style="margin-left:300px; margin-top:-40px;font-size:16px">වාර ණය පහසුකම්</h1>
+	<h1 class="title inline" style="margin-left:230px; margin-top:-150px;font-size:18px">தவணை கடன் வசதி ஒப்பந்தம்</h1>
+	<h1 class="title inline" style="margin-left:230px; margin-top:-10px;font-size:18px">TERM LOAN FACILITY AGREEMENT</h1>
 
 
-        <table class="" style="width:100%;">
-            <tr class="lines">
-                <th class="label inline lines" style="padding:5px 50px 50px 10px;margin-left:10px; ">පත්‍රිකා අංක//Ticket No</th>
-                <th class="label inline " style="margin-left:280px;">1. දිනය/Date</th>
-                <th class="label inline " style="margin-left:50px;">වේලාව/Time</th>
-            </tr>
-            <tr>
-            </tr>
-        </table>
-
-        <table id="table-example-1">
-            <caption>Description of Article Mortgaged</caption>
-            <thead>
-                <tr>
-                    <th rowspan="2">Description</th>
-                    <th rowspan="2">Remark</th>
-                    <th rowspan="2">Total Assets Value</th>
-                    <th rowspan="2">Total Weight</th>
-                    <th colspan="2">Net Gold Weight</th>
-
-                </tr>
-                <!-- <tr>
-                    <th>kg/mm
-                        <sup>2</sup>
-                    </th>
-                    <th>lb/in
-                        <sup>2</sup>
-                    </th>
-                </tr> -->
+	<table class="" style="width:100%;">
+		<tr class="lines">
+			<th class="label inline lines" style="padding:5px 50px 50px 10px;margin-left:10px; ">පත්‍රිකා අංක//Ticket No</th>
+			<th class="label inline " style="margin-left:280px;">1. දිනය/Date : @Model.Date</th>
+			<th class="label inline " style="margin-left:50px;">වේලාව/Time : @Model.Time</th>
+		</tr>
+		<tr>
+		</tr>
+	</table>
+<div class="pad">
+	<table  style="margin-left: 0px;padding: 10px;" id="table-example-1">
+		<caption>Description of Article Mortgaged</caption>
+		<thead>
+			<tr>
+				<th style="font-size: 10px" rowspan="2">විස්තරය/Description</th>
+				<th style="font-size: 10px" rowspan="2">සටහන්/Remark</th>
+				<th style="font-size: 10px" rowspan="2">(i) මුළු තක්සේරු වටිනාකම රු:/Total Assets Value</th>
+				<th style="font-size: 10px" rowspan="2">(ii) මුළු බර (ග්‍රෑම්)/Total Weight</th>
+				<th style="font-size: 10px" colspan="2">(iii) ශුද්ධ රන් බර (ග්‍රෑම්)/Net Gold Weight</th>
+			</tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Gold Chain</td>
-                    <td>Hook broken</td>
-                    <td>50,000.00</td>
-                    <td>20g</td>
-                    <td>18g</td>
-
-                </tr>
-                <tr>
-                    <td>Gold Chain</td>
-                    <td>Hook broken</td>
-                    <td>50,000.00</td>
-                    <td>20g</td>
-                    <td>18g</td>
-
-                </tr>
-                <tr>
-                    <td>Gold Chain</td>
-                    <td>Hook broken</td>
-                    <td>50,000.00</td>
-                    <td>20g</td>
-                    <td>18g</td>
-
-                </tr>
-
+            	@foreach (Article article in Model.Articles)
+            	{
+            		<tr>
+            			<td style="font-size: 10px; width: 46px;">@article.Name</td>
+            			<td style="font-size: 10px; width: 41px;">@article.Note</td>
+            			<td style="font-size: 10px; width: 183px;">@article.Amount</td>
+            			<td style="font-size: 10px; width: 115px;">@article.GrossWeight</td>
+            			<td style="font-size: 10px; width: 115px;">@article.NetWeight</td>
+            		</tr>
+            	}
             </tbody>
         </table>
+</div>
         <br>
         <p style="margin-left:10px;"> Re-Payment:</p>
         <p style="margin-left:10px;"> Date of Re-Payment:</p>
         <p style="margin-left:10px;"> Default Interest Rate:</p>
     </page>
     <page size="A4">
-        <p style="padding:50px;font-size: 10px;">
-            Video provides a powerful way to help you prove your point. When you click Online Video, you can paste in the embed code
-            for the video you want to add. You can also type a keyword to search online for the video that best fits your
-            document. To make your document look professionally produced, Word provides header, footer, cover page, and text
-            box designs that complement each other. For example, you can add a matching cover page, header, and sidebar.
-            Click Insert and then choose the elements you want from the different galleries. Themes and styles also help
-            keep your document coordinated. When you click Design and choose a new Theme, the pictures, charts, and SmartArt
-            graphics change to match your new theme. <br><br>When you apply styles, your headings change to match the new theme.
-            Save time in Word with new buttons that show up where you need them. To change the way a picture fits in your
-            document, click it and a button for layout options appears next to it. When you work on a table, click where
-            you want to add a row or a column, and then click the plus sign. Reading is easier, too, in the new Reading view.
-            You can collapse parts of the document and focus on the text you want. If you need to stop reading before you
-            reach the end, Word remembers where you left off - even on another device. Video provides a powerful way to help
-            you prove your point. When you click Online Video, you can paste in the embed code for the video you want to
-            add. You can also type a keyword to search online for the video that best fits your document. To make your document
-            look professionally produced, Word provides header, footer, cover page, and text box designs that complement
-            each other. For example, you can add a matching cover page, header, and sidebar. Click Insert and then choose
-            the elements you want from the different galleries. <br><br>Themes and styles also help keep your document coordinated.
-            When you click Design and choose a new Theme, the pictures, charts, and SmartArt graphics change to match your
-            new theme. When you apply styles, your headings change to match the new theme. Save time in Word with new buttons
-            that show up where you need them. To change the way a picture fits in your document, click it and a button for
-            layout options appears next to it. When you work on a table, click where you want to add a row or a column, and
-            then click the plus sign. Reading is easier, too, in the new Reading view. You can collapse parts of the document
-            and focus on the text you want. If you need to stop reading before you reach the end, Word remembers where you
-            left off - even on another device. Video provides a powerful way to help you prove your point. When you click
-            Online Video, you can paste in the embed code for the video you want to add. You can also type a keyword to search
-            online for the video that best fits your document. To make your document look professionally produced, Word provides
-            header, footer, cover page, and text box designs that complement each other. For example, you can add a matching
-            cover page, header, and sidebar. <br><br>Click Insert and then choose the elements you want from the different galleries.
-            Themes and styles also help keep your document coordinated. When you click Design and choose a new Theme, the
-            pictures, charts, and SmartArt graphics change to match your new theme. When you apply styles, your headings
-            change to match the new theme. Save time in Word with new buttons that show up where you need them. To change
-            the way a picture fits in your document, click it and a button for layout options appears next to it. When you
-            work on a table, click where you want to add a row or a column, and then click the plus sign. Reading is easier,
-            too, in the new Reading view. You can collapse parts of the document and focus on the text you want. If you need
-            to stop reading before you reach the end, Word remembers where you left off - even on another device. Video provides
-            a powerful way to help you prove your point. When you click Online Video, you can paste in the embed code for
-            the video you want to add. You can also type a keyword to search online for the video that best fits your document.
-            To make your document look professionally produced, Word provides header, footer, cover page, and text box designs
-            that complement each other. For example, you can add a matching cover page, header, and sidebar. Click Insert
-            and then choose the elements you want from the different galleries. Themes and styles also help keep your document
-            coordinated. When you click Design and choose a new Theme, the pictures, charts, and SmartArt graphics change
-            to match your new theme. When you apply styles, your headings change to match the new theme. Save time in Word
-            with new buttons that show up where you need them. <br><br>To change the way a picture fits in your document, click it
-            and a button for layout options appears next to it. When you work on a table, click where you want to add a row
-            or a column, and then click the plus sign. Reading is easier, too, in the new Reading view. You can collapse
-            parts of the document and focus on the text you want. If you need to stop reading before you reach the end, Word
-            remembers where you left off - even on another device.
-            Click Insert and then choose the elements you want from the different galleries.
-            Themes and styles also help keep your document coordinated. When you click Design and choose a new Theme, the
-            pictures, charts, and SmartArt graphics change to match your new theme. When you apply styles, your headings
-            change to match the new theme. Save time in Word with new buttons that show up where you need them. To change
-            the way a picture fits in your document, click it and a button for layout options appears next to it. When you
-            work on a table, click where you want to add a row or a column, and then click the plus sign. Reading is easier,
-            too, in the new Reading view. You can collapse parts of the document and focus on the text you want. If you need
-            to stop reading before you reach the end, Word remembers where you left off - even on another device. Video provides
-            a powerful way to help you prove your point. When you click Online Video, you can paste in the embed code for
-            the video you want to add. You can also type a keyword to search online for the video that best fits your document.
-            To make your document look professionally produced, Word provides header, footer, cover page, and text box designs
-            that complement each other. For example, you can add a matching cover page, header, and sidebar. Click Insert
-            and then choose the elements you want from the different galleries. Themes and styles also help keep your document
-            coordinated. When you click Design and choose a new Theme, the pictures, charts, and SmartArt graphics change
-            to match your new theme. When you apply styles, your headings change to match the new theme. Save time in Word
-            with new buttons that show up where you need them. <br><br>To change the way a picture fits in your document, click it
-            and a button for layout options appears next to it. When you work on a table, click where you want to add a row
-            or a column, and then click the plus sign. Reading is easier, too, in the new Reading view. You can collapse
-            parts of the document and focus on the text you want. If you need to stop reading before you reach the end, Word
-            remembers where you left off - even on another device.
-
-
-        </p>
+    	<p style="padding:50px;font-size: 10px;">
+    		Video provides a powerful way to help you prove your point. When you click Online Video, you can paste in the embed code
+    		for the video you want to add. You can also type a keyword to search online for the video that best fits your
+    		document. To make your document look professionally produced, Word provides header, footer, cover page, and text
+    		box designs that complement each other. For example, you can add a matching cover page, header, and sidebar.
+    		Click Insert and then choose the elements you want from the different galleries. Themes and styles also help
+    		keep your document coordinated. When you click Design and choose a new Theme, the pictures, charts, and SmartArt
+    		graphics change to match your new theme. <br><br>When you apply styles, your headings change to match the new theme.
+    		Save time in Word with new buttons that show up where you need them. To change the way a picture fits in your
+    		document, click it and a button for layout options appears next to it. When you work on a table, click where
+    		you want to add a row or a column, and then click the plus sign. Reading is easier, too, in the new Reading view.
+    		You can collapse parts of the document and focus on the text you want. If you need to stop reading before you
+    		reach the end, Word remembers where you left off - even on another device. Video provides a powerful way to help
+    		you prove your point. When you click Online Video, you can paste in the embed code for the video you want to
+    		add. You can also type a keyword to search online for the video that best fits your document. To make your document
+    		look professionally produced, Word provides header, footer, cover page, and text box designs that complement
+    		each other. For example, you can add a matching cover page, header, and sidebar. Click Insert and then choose
+    		the elements you want from the different galleries. <br><br>Themes and styles also help keep your document coordinated.
+    		When you click Design and choose a new Theme, the pictures, charts, and SmartArt graphics change to match your
+    		new theme. When you apply styles, your headings change to match the new theme. Save time in Word with new buttons
+    		that show up where you need them. To change the way a picture fits in your document, click it and a button for
+    		layout options appears next to it. When you work on a table, click where you want to add a row or a column, and
+    		then click the plus sign. Reading is easier, too, in the new Reading view. You can collapse parts of the document
+    		and focus on the text you want. If you need to stop reading before you reach the end, Word remembers where you
+    		left off - even on another device. Video provides a powerful way to help you prove your point. When you click
+    		Online Video, you can paste in the embed code for the video you want to add. You can also type a keyword to search
+    		online for the video that best fits your document. To make your document look professionally produced, Word provides
+    		header, footer, cover page, and text box designs that complement each other. For example, you can add a matching
+    		cover page, header, and sidebar. <br><br>Click Insert and then choose the elements you want from the different galleries.
+    		Themes and styles also help keep your document coordinated. When you click Design and choose a new Theme, the
+    		pictures, charts, and SmartArt graphics change to match your new theme. When you apply styles, your headings
+    		change to match the new theme. Save time in Word with new buttons that show up where you need them. To change
+    		the way a picture fits in your document, click it and a button for layout options appears next to it. When you
+    		work on a table, click where you want to add a row or a column, and then click the plus sign. Reading is easier,
+    		too, in the new Reading view. You can collapse parts of the document and focus on the text you want. If you need
+    		to stop reading before you reach the end, Word remembers where you left off - even on another device. Video provides
+    		a powerful way to help you prove your point. When you click Online Video, you can paste in the embed code for
+    		the video you want to add. You can also type a keyword to search online for the video that best fits your document.
+    		To make your document look professionally produced, Word provides header, footer, cover page, and text box designs
+    		that complement each other. For example, you can add a matching cover page, header, and sidebar. Click Insert
+    		and then choose the elements you want from the different galleries. Themes and styles also help keep your document
+    		coordinated. When you click Design and choose a new Theme, the pictures, charts, and SmartArt graphics change
+    		to match your new theme. When you apply styles, your headings change to match the new theme. Save time in Word
+    		with new buttons that show up where you need them. <br><br>To change the way a picture fits in your document, click it
+    		and a button for layout options appears next to it. When you work on a table, click where you want to add a row
+    		or a column, and then click the plus sign. Reading is easier, too, in the new Reading view. You can collapse
+    		parts of the document and focus on the text you want. If you need to stop reading before you reach the end, Word
+    		remembers where you left off - even on another device.
+    		Click Insert and then choose the elements you want from the different galleries.
+    		Themes and styles also help keep your document coordinated. When you click Design and choose a new Theme, the
+    		pictures, charts, and SmartArt graphics change to match your new theme. When you apply styles, your headings
+    		change to match the new theme. Save time in Word with new buttons that show up where you need them. To change
+    		the way a picture fits in your document, click it and a button for layout options appears next to it. When you
+    		work on a table, click where you want to add a row or a column, and then click the plus sign. Reading is easier,
+    		too, in the new Reading view. You can collapse parts of the document and focus on the text you want. If you need
+    		to stop reading before you reach the end, Word remembers where you left off - even on another device. Video provides
+    		a powerful way to help you prove your point. When you click Online Video, you can paste in the embed code for
+    		the video you want to add. You can also type a keyword to search online for the video that best fits your document.
+    		To make your document look professionally produced, Word provides header, footer, cover page, and text box designs
+    		that complement each other. For example, you can add a matching cover page, header, and sidebar. Click Insert
+    		and then choose the elements you want from the different galleries. Themes and styles also help keep your document
+    		coordinated. When you click Design and choose a new Theme, the pictures, charts, and SmartArt graphics change
+    		to match your new theme. When you apply styles, your headings change to match the new theme. Save time in Word
+    		with new buttons that show up where you need them. <br><br>To change the way a picture fits in your document, click it
+    		and a button for layout options appears next to it. When you work on a table, click where you want to add a row
+    		or a column, and then click the plus sign. Reading is easier, too, in the new Reading view. You can collapse
+    		parts of the document and focus on the text you want. If you need to stop reading before you reach the end, Word
+    		remembers where you left off - even on another device.
+    	</p>
     </page>
-
 </body>
-
 </html>
