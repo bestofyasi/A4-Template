@@ -11,8 +11,6 @@
 	<style>
 		body {
 			background: rgb(204, 204, 204);
-			padding: 0px !important;
-			margin: 0px !important;
 		}
 
 		page[size="A4"] {
@@ -20,7 +18,10 @@
 			width: 21cm;
 			height: 29.7cm;
 			display: block;
+			margin: 0 auto;
 			margin-bottom: 0.5cm;
+			/* box-shadow: 0 0 0.5cm rgba(0,0,0,0.5); */
+			/* border: 1.25cm solid #000; */
 		}
 
 		@@media print {
@@ -32,7 +33,7 @@
 		}
 
 		.label {
-			font-size: 11px;
+			font-size: 10px;
 			font-weight: 100;
 			padding: 5px;
 		}
@@ -100,8 +101,7 @@
 			font-weight: 100;
 		}
 
-		.title,
-		.term-loan-facility {
+		.title {
 			margin-top: 20px;
 			text-align: center;
 		}
@@ -113,7 +113,7 @@
 		}
 
 		.date-time {
-			/* margin-top: 10px; */
+			margin-top: 10px;
 			padding: 10px;
 		}
 
@@ -147,7 +147,7 @@
 		.article-details-table th,
 		.article-details-table td {
 			border: solid thin;
-			padding: 0.3rem 0.2rem;
+			padding: 0.5rem 0.2rem;
 			font-size: 8px;
 		}
 		.sign-table{
@@ -212,7 +212,7 @@
 			</table>
 		</div>
 
-		<div class="article-details" style="height: 280px;">
+		<div class="article-details" style="height: 350px;">
 			<table class="article-details-table">
 				<thead>
 					<tr style="background: #EDEDED">
@@ -231,7 +231,6 @@
 							<th class="basic-detail-label" style="width: 15%;">@article.GrossWeight</th>
 							<th class="basic-detail-label" style="width: 15%;">@article.NetWeight</th>
 						</tr>
-					
 					}	
 					
 					<tr style="background: #EDEDED">
@@ -280,53 +279,7 @@
 							</tr>
 		
 						</thead>
-				</table>
-		</div>
-		<hr>
-		<div class="term-loan-facility">
-			<h5 class="title-heading">වාර ණය පහසුකම් ගිවිසුම/ TERM LOAN FACILITY</h5>
-
-			<div class="date-time">
-				<table class="date-time-table">
-					<thead>
-						<tr>
-							<th class="label"><span style="font-size: 10px;">දිනය</span>/Date : @Model.Date</th>
-							<th class="label"><span style="font-size: 10px;">අංකය</span>/ No :XXXXXXX</th>
-							<th class="label"><span style="font-size: 10px;">කාලය</span>/Period: XXXXXXXX</th>
-							<th class="label"><span style="font-size: 10px;">ජා.හැ.ප. අංකය</span>/ NIC No. : XXXXXX</th>
-						</tr>
-					</thead>
-				</table>
-			</div>
-
-			<table class="basic-detail">
-					<thead>
-						<tr>
-							<th class="basic-detail-label" style="width: 60%;"><span style="font-size: 10px;">ණය ගැනුම්කරුගේ නම</span>/ Name of Borrwer : XXXXX</th>
-							<th class="basic-detail-label" style="width: 40%;"><span style="font-size: 10px;">රු</span>. Rs. : XXXXX.00</th>
-						</tr>
-						<tr>
-							<th class="basic-detail-label"><span style="font-size: 10px;">ලිපිනය</span>/ Address : XXXXXXX</th>
-							<th class="basic-detail-label"><span style="font-size: 10px;">ණය අත්තිකාරම</span>/ Loan Advavnce : XXXXXXX</th>
-	
-						</tr>
-						<tr>
-							<th class="basic-detail-label"><span style="font-size: 10px;">උකස් තබන ලද භණ්ඩවල විස්තර</span>/ Description of Articles Mortgaged : XXXXXXX</th>
-						</tr>
-					</thead>
-				</table>
-				<table class="sign-table" style="margin-top:10px">
-						<thead>
-							<tr>
-								<th class="basic-detail-label" style="font-size:9px; width: 30%; border-top: solid thin; "><span style="font-size: 7px;">තක්සේරු</span>/ Valuer</th>	
-								<th class="basic-detail-label" style="font-size:9px; width: 5%;  "><span style="font-size: 7px;"></th>	
-								<th class="basic-detail-label" style="font-size:9px; width: 30%; border-top: solid thin; "><span style="font-size: 7px;">බලයලත් නිලධාරී</span>/ Authorized Officer</th>	
-								<th class="basic-detail-label" style="font-size:9px; width: 5%; "><span style="font-size: 7px;"></th>	
-								<th class="basic-detail-label" style="font-size:9px; width: 30%; border-top: solid thin; "><span style="font-size: 7px;">ණය ගැනිම්කරු</span>/ Borrower</th>	
-							</tr>
-		
-						</thead>
-				</table>
+					</table>
 		</div>
 	</page>
 
