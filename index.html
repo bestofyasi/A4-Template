@@ -1,7 +1,7 @@
-@using EclipsePrint.Models
-@model EclipsePrint.Models.Ticket
+@using EclipsePrint.Models @model EclipsePrint.Models.Ticket
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,222 +9,289 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- <link rel="stylesheet" type="text/css" media="screen" href="style.css" /> -->
 	<style>
-
-
-	page[size="A4"] {
-		background: white;
-		width: 21cm;
-		height: 29.7cm;
-		display: block;
-		margin: 0 auto;
-		margin-bottom: 0.5cm;
-		/* box-shadow: 0 0 0.5cm rgba(0,0,0,0.5); */
-		/* border: 1.25cm solid #000; */
-	}
-
-	@@media print {
-		body,
-		page[size="A4"] {
-			margin: 0;
-			box-shadow: 0;
+		body {
+			background: rgb(204, 204, 204);
 		}
-	}
 
-	.label {
-		font-size: 11px;
-		padding: 10px 0 0 10px;
-	}
+		page[size="A4"] {
+			background: white;
+			width: 21cm;
+			height: 29.7cm;
+			display: block;
+			margin: 0 auto;
+			margin-bottom: 0.5cm;
+			/* box-shadow: 0 0 0.5cm rgba(0,0,0,0.5); */
+			/* border: 1.25cm solid #000; */
+		}
 
-	.inline {
-		display: inline-block;
-	}
+		@media print {
+			body,
+			page[size="A4"] {
+				margin: 0;
+				box-shadow: 0;
+			}
+		}
 
-	.title {
-		font-size: 13px;
-	}
+		.label {
+			font-size: 10px;
+			/* padding: 10px 0 0 10px; */
+			font-weight: 100;
+			padding: 5px;
+		}
 
-	.lines {
-		border: 1px solid black;
-		border-collapse: collapse;
-	}
+		.inline {
+			display: inline-block;
+		}
 
-	#table-example-1 {
-		border: solid thin;
-		border-collapse: collapse;
-		margin-left: 50px;
-	}
+		.lines {
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
 
-	#table-example-1 caption {
-		padding-bottom: 0.5em;
-	}
+		.article-details-table {
+			border: solid thin;
+			border-collapse: collapse;
 
-	#table-example-1 th,
-	#table-example-1 td {
-		border: solid thin;
-		padding: 0.5rem 1.5rem;
-	}
+		}
 
-	#table-example-1 td {
-		white-space: nowrap;
-	}
+		.article-details-table caption {
+			padding-bottom: 0.5em;
+		}
 
-	#table-example-1 th {
-		font-weight: normal;
-	}
 
-	#table-example-1 td {
-		border-style: none solid;
-		vertical-align: top;
-	}
+		.article-details-table td {
+			white-space: nowrap;
+		}
 
-	#table-example-1 th {
-		padding: 0.2em;
-		vertical-align: middle;
-		text-align: center;
-	}
+		.article-details-table th {
+			font-weight: normal;
+		}
 
-	#table-example-1 tbody td:first-child::after {
-		content: leader(". ");
-	}
+		.article-details-table td {
+			border-style: none solid;
+			vertical-align: top;
+		}
 
-	body {
-		padding: 1rem;
-	}
-    .pad{
-        padding: 20px;
-    }
-</style>
+		.article-details-table th {
+			padding: 0.2em;
+			vertical-align: middle;
+			text-align: center;
+		}
+
+		.article-details-table tbody td:first-child::after {
+			content: leader(". ");
+		}
+
+		body {
+			padding: 1rem;
+		}
+
+		.pad {
+			padding: 20px;
+		}
+
+		.logo {
+			width: 20%;
+			padding: 20px 15px 10px 15px;
+		}
+
+		.heading {
+			margin-top: 0px;
+			margin-bottom: 0px;
+			margin-left: 15px;
+			font-weight: 100;
+		}
+
+		.title {
+			margin-top: 20px;
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%) translateY(-50%);
+		}
+
+		.title-heading {
+			font-weight: 100;
+			margin-top: 0px;
+			margin-bottom: 0px;
+			text-align: center;
+		}
+
+		.date-time {
+			margin-top: 60px;
+			padding: 10px;
+		}
+
+		.date-time-table {
+			width: 100%;
+			background: rgb(51, 51, 51);
+			color: rgb(255, 255, 255);
+			font-weight: 100;
+		}
+
+		.basic-detail {
+			width: 100%;
+			text-align: left;
+			padding: 10px;
+		}
+
+		.basic-detail-label {
+			font-size: 10px;
+			/* padding: 10px 0 0 10px; */
+			font-weight: 100;
+			padding: 5px;
+		}
+
+		
+		.description,
+		.article-details,
+		.agreement,
+		.sign {
+			padding: 10px;
+		}
+		
+		.article-details-table th,
+		.article-details-table td {
+			border: solid thin;
+			padding: 0.5rem 0.2rem;
+			font-size: 8px;
+		}
+		.sign-table{
+			width: 100%;
+		}
+		.back{
+			width: 100%;
+		}
+	</style>
 </head>
+
 <body>
 	<page size="A4">
-		<table style="width:100%">
-			<tr>
-				<th class="label inline" style="margin-left:30px; margin-top:-10px;">ශාඛාව/கிளை/Branch</th>
-				<th class="title inline" style="margin-left:420px;margin-top:5px">එල්. බී. ෆිනෑන්ස් පී. එල්. සී.
-				</br>
-				<p style="margin-top:-1px;margin-left:-80px">LB Finance PLC</p>
+		<img class="logo" src="https://biodiversitysrilanka.org/wp-content/uploads/2014/06/LB_Finance_logo_E_.jpg" alt="">
+		<h5 class="heading">එල්. බී. ෆිනෑන්ස් පී එල් සී</h5>
+		<h5 class="heading">LB Finance PLC</h5>
 
-			</th>
-		</tr>
-		<tr>
-		</tr>
-	</table>
-	<div style="width:170px;height:30px;border:1px solid #000;margin-left:10px;margin-top:-12px"></div>
-	<h1 class="title inline" style="margin-left:300px; margin-top:-40px;font-size:16px">වාර ණය පහසුකම්</h1>
-	<h1 class="title inline" style="margin-left:230px; margin-top:-150px;font-size:18px">தவணை கடன் வசதி ஒப்பந்தம்</h1>
-	<h1 class="title inline" style="margin-left:230px; margin-top:-10px;font-size:18px">TERM LOAN FACILITY AGREEMENT</h1>
+		<div class="title">
+			<h3 class="title-heading">වාර ණය පහසුකම් ගිවිසුම</h3>
+			<h3 class="title-heading">தவணை கடன் வசதி ஒப்பந்தம்</h3>
+			<h3 class="title-heading">TERM LOAN FACILITY AGREEMENT</h3>
+		</div>
 
+		<div class="date-time">
+			<table class="date-time-table">
+				<thead>
+					<tr>
+						<th class="label"><span style="font-size: 9px;">පත්‍රිකා අංක</span>//Ticket No :@XXXXXXX</th>
+						<th class="label"><span style="font-size: 9px;">දිනය</span>/Date : @Model.Date</th>
+						<th class="label"><span style="font-size: 9px;">වේලාව</span>/Time : @Model.Time</th>
+						<th class="label"><span style="font-size: 9px;">ශාඛාව/கிளை</span>/Branch: @XXXXXXXX</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+		<div class="">
+			<table class="basic-detail">
+				<thead>
+					<tr>
+						<th class="basic-detail-label" style="width: 60%;"><span style="font-size: 9px;">ණය ගැනුම්කරුගේ නම</span>/ Name of Borrwer : @XXXXX</th>
+						<th class="basic-detail-label" style="width: 40%;"><span style="font-size: 9px;">ප්‍රදානය කරනු ලබන මුදල</span>/ Amount Granted : @XXXXX</th>
+					</tr>
+					<tr>
+						<th class="basic-detail-label"><span style="font-size: 9px;">ජා.හැ.ප. අංකය</span>/ NIC No. : @XXXXXX</th>
+						<th class="basic-detail-label"><span style="font-size: 9px;">මාසික පෝලි අනුපාතය</span>/ Rate of Interest per Month : @XXXXX</th>
+					</tr>
+					<tr>
+						<th class="basic-detail-label"><span style="font-size: 9px;">ලිපිනය</span>/ Address : @XXXXXXX</th>
 
-	<table class="" style="width:100%;">
-		<tr class="lines">
-			<th class="label inline lines" style="padding:5px 50px 50px 10px;margin-left:10px; ">පත්‍රිකා අංක//Ticket No</th>
-			<th class="label inline " style="margin-left:280px;">1. දිනය/Date : @Model.Date</th>
-			<th class="label inline " style="margin-left:50px;">වේලාව/Time : @Model.Time</th>
-		</tr>
-		<tr>
-		</tr>
-	</table>
-<div class="pad">
-	<table  style="margin-left: 0px;padding: 10px;" id="table-example-1">
-		<caption>Description of Article Mortgaged</caption>
-		<thead>
-			<tr>
-				<th style="font-size: 10px" rowspan="2">විස්තරය/Description</th>
-				<th style="font-size: 10px" rowspan="2">සටහන්/Remark</th>
-				<th style="font-size: 10px" rowspan="2">(i) මුළු තක්සේරු වටිනාකම රු:/Total Assets Value</th>
-				<th style="font-size: 10px" rowspan="2">(ii) මුළු බර (ග්‍රෑම්)/Total Weight</th>
-				<th style="font-size: 10px" colspan="2">(iii) ශුද්ධ රන් බර (ග්‍රෑම්)/Net Gold Weight</th>
-			</tr>
-            </thead>
-            <tbody>
-            	@foreach (Article article in Model.Articles)
-            	{
-            		<tr>
-            			<td style="font-size: 10px; width: 46px;">@article.Name</td>
-            			<td style="font-size: 10px; width: 41px;">@article.Note</td>
-            			<td style="font-size: 10px; width: 183px;">@article.Amount</td>
-            			<td style="font-size: 10px; width: 115px;">@article.GrossWeight</td>
-            			<td style="font-size: 10px; width: 115px;">@article.NetWeight</td>
-            		</tr>
-            	}
-            </tbody>
-        </table>
-</div>
-        <br>
-        <p style="margin-left:10px;"> Re-Payment:</p>
-        <p style="margin-left:10px;"> Date of Re-Payment:</p>
-        <p style="margin-left:10px;"> Default Interest Rate:</p>
-    </page>
-    <page size="A4">
-    	<p style="padding:50px;font-size: 10px;">
-    		Video provides a powerful way to help you prove your point. When you click Online Video, you can paste in the embed code
-    		for the video you want to add. You can also type a keyword to search online for the video that best fits your
-    		document. To make your document look professionally produced, Word provides header, footer, cover page, and text
-    		box designs that complement each other. For example, you can add a matching cover page, header, and sidebar.
-    		Click Insert and then choose the elements you want from the different galleries. Themes and styles also help
-    		keep your document coordinated. When you click Design and choose a new Theme, the pictures, charts, and SmartArt
-    		graphics change to match your new theme. <br><br>When you apply styles, your headings change to match the new theme.
-    		Save time in Word with new buttons that show up where you need them. To change the way a picture fits in your
-    		document, click it and a button for layout options appears next to it. When you work on a table, click where
-    		you want to add a row or a column, and then click the plus sign. Reading is easier, too, in the new Reading view.
-    		You can collapse parts of the document and focus on the text you want. If you need to stop reading before you
-    		reach the end, Word remembers where you left off - even on another device. Video provides a powerful way to help
-    		you prove your point. When you click Online Video, you can paste in the embed code for the video you want to
-    		add. You can also type a keyword to search online for the video that best fits your document. To make your document
-    		look professionally produced, Word provides header, footer, cover page, and text box designs that complement
-    		each other. For example, you can add a matching cover page, header, and sidebar. Click Insert and then choose
-    		the elements you want from the different galleries. <br><br>Themes and styles also help keep your document coordinated.
-    		When you click Design and choose a new Theme, the pictures, charts, and SmartArt graphics change to match your
-    		new theme. When you apply styles, your headings change to match the new theme. Save time in Word with new buttons
-    		that show up where you need them. To change the way a picture fits in your document, click it and a button for
-    		layout options appears next to it. When you work on a table, click where you want to add a row or a column, and
-    		then click the plus sign. Reading is easier, too, in the new Reading view. You can collapse parts of the document
-    		and focus on the text you want. If you need to stop reading before you reach the end, Word remembers where you
-    		left off - even on another device. Video provides a powerful way to help you prove your point. When you click
-    		Online Video, you can paste in the embed code for the video you want to add. You can also type a keyword to search
-    		online for the video that best fits your document. To make your document look professionally produced, Word provides
-    		header, footer, cover page, and text box designs that complement each other. For example, you can add a matching
-    		cover page, header, and sidebar. <br><br>Click Insert and then choose the elements you want from the different galleries.
-    		Themes and styles also help keep your document coordinated. When you click Design and choose a new Theme, the
-    		pictures, charts, and SmartArt graphics change to match your new theme. When you apply styles, your headings
-    		change to match the new theme. Save time in Word with new buttons that show up where you need them. To change
-    		the way a picture fits in your document, click it and a button for layout options appears next to it. When you
-    		work on a table, click where you want to add a row or a column, and then click the plus sign. Reading is easier,
-    		too, in the new Reading view. You can collapse parts of the document and focus on the text you want. If you need
-    		to stop reading before you reach the end, Word remembers where you left off - even on another device. Video provides
-    		a powerful way to help you prove your point. When you click Online Video, you can paste in the embed code for
-    		the video you want to add. You can also type a keyword to search online for the video that best fits your document.
-    		To make your document look professionally produced, Word provides header, footer, cover page, and text box designs
-    		that complement each other. For example, you can add a matching cover page, header, and sidebar. Click Insert
-    		and then choose the elements you want from the different galleries. Themes and styles also help keep your document
-    		coordinated. When you click Design and choose a new Theme, the pictures, charts, and SmartArt graphics change
-    		to match your new theme. When you apply styles, your headings change to match the new theme. Save time in Word
-    		with new buttons that show up where you need them. <br><br>To change the way a picture fits in your document, click it
-    		and a button for layout options appears next to it. When you work on a table, click where you want to add a row
-    		or a column, and then click the plus sign. Reading is easier, too, in the new Reading view. You can collapse
-    		parts of the document and focus on the text you want. If you need to stop reading before you reach the end, Word
-    		remembers where you left off - even on another device.
-    		Click Insert and then choose the elements you want from the different galleries.
-    		Themes and styles also help keep your document coordinated. When you click Design and choose a new Theme, the
-    		pictures, charts, and SmartArt graphics change to match your new theme. When you apply styles, your headings
-    		change to match the new theme. Save time in Word with new buttons that show up where you need them. To change
-    		the way a picture fits in your document, click it and a button for layout options appears next to it. When you
-    		work on a table, click where you want to add a row or a column, and then click the plus sign. Reading is easier,
-    		too, in the new Reading view. You can collapse parts of the document and focus on the text you want. If you need
-    		to stop reading before you reach the end, Word remembers where you left off - even on another device. Video provides
-    		a powerful way to help you prove your point. When you click Online Video, you can paste in the embed code for
-    		the video you want to add. You can also type a keyword to search online for the video that best fits your document.
-    		To make your document look professionally produced, Word provides header, footer, cover page, and text box designs
-    		that complement each other. For example, you can add a matching cover page, header, and sidebar. Click Insert
-    		and then choose the elements you want from the different galleries. Themes and styles also help keep your document
-    		coordinated. When you click Design and choose a new Theme, the pictures, charts, and SmartArt graphics change
-    		to match your new theme. When you apply styles, your headings change to match the new theme. Save time in Word
-    		with new buttons that show up where you need them. <br><br>To change the way a picture fits in your document, click it
-    		and a button for layout options appears next to it. When you work on a table, click where you want to add a row
-    		or a column, and then click the plus sign. Reading is easier, too, in the new Reading view. You can collapse
-    		parts of the document and focus on the text you want. If you need to stop reading before you reach the end, Word
-    		remembers where you left off - even on another device.
-    	</p>
-    </page>
+					</tr>
+				</thead>
+			</table>
+		</div>
+		<div class="description">
+			<table class="date-time-table">
+				<thead>
+					<tr>
+						<th class="label">
+							<span style="font-size: 9px;">උකස් තබන ලද භණ්ඩවල විස්තර</span>/ Description of Articles Mortgaged</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+
+		<div class="article-details" style="height: 350px;">
+			<table class="article-details-table">
+				<thead>
+					<tr style="background: #EDEDED">
+						<th class="basic-detail-label" style="width: 40%;"><span style="font-size: 8px;">විස්තරය</span>/ Description</th>
+						<th class="basic-detail-label" style="width: 15%;"><span style="font-size: 8px;">සටහන්</span>/ Remarks</th>
+						<th class="basic-detail-label" style="width: 15%;"><span style="font-size: 8px;">මුළු තක්සේරු වටිනාකම</span>/Total Assessed Value</th>
+						<th class="basic-detail-label" style="width: 15%;"><span style="font-size: 8px;">මුළු බර (ග්‍රැම්)</span>/ Total Weight(gms)</th>
+						<th class="basic-detail-label" style="width: 15%;"><span style="font-size: 8px;">ශුද්ධ රන් බර (ග්‍රෑම්)</span>/ Total Weight(gms)</th>
+					</tr>
+
+					<tr>
+						<th class="basic-detail-label" style="width: 40%;">Val</th>
+						<th class="basic-detail-label" style="width: 15%;">Val</th>
+						<th class="basic-detail-label" style="width: 15%;">Val</th>
+						<th class="basic-detail-label" style="width: 15%;">Val</th>
+						<th class="basic-detail-label" style="width: 15%;">Val</th>
+					</tr>
+					
+					
+					
+					<tr style="background: #EDEDED">
+						<th class="basic-detail-label" style="width: 40%;">එකතුව/ Total</th>
+						<th class="basic-detail-label" style="width: 15%;"></th>
+						<th class="basic-detail-label" style="width: 15%;">Val</th>
+						<th class="basic-detail-label" style="width: 15%;">Val</th>
+						<th class="basic-detail-label" style="width: 15%;">Val</th>
+					</tr>
+
+				</thead>
+			</table>
+		</div>
+
+		<div class="">
+			<table class="basic-detail">
+				<thead>
+					<tr>
+						<th class="basic-detail-label" style="width: 60%;"><span style="font-size: 9px;">ගෙවිම</span>/ Repayment,</th>
+						<th class="basic-detail-label" style="width: 40%;"><span style="font-size: 9px;">ගෙවීම් කළයුතු දිනය</span>/Date of Repayment : @XXXX</th>
+					</tr>
+					<tr>
+						<th class="basic-detail-label"><span style="font-size: 9px;">වාරික ගණන</span>/No. of installments : @XXXXXXx</th>
+						<th class="basic-detail-label"><span style="font-size: 9px;">පැහැර හැරීමේ පොළී අනුපාතිකය</span>/ Default Interest Rate : @XXXX</th>
+					</tr>
+					<tr>
+						<th class="basic-detail-label"><span style="font-size: 9px;">වාරිකය (රු)</span>/ installments (Rs.) : @XXXXXX</th>
+
+					</tr>
+				</thead>
+			</table>
+		</div>
+		<div class="agreement">
+			<p style="font-size: 8px; margin-bottom: 3px">මෙම ගිවිසුමේ කොටසක් සංයුක්ත වන මා විසින් කියවා අවබෝධ කරගනු ලැබු පසුපිටේ සඳහන් නියම හා කොන්දේසිවල්ට යටත්ව, මා විසින් එල්.බී. ෆිනෑන්ස් ආයතනයේ රන් ණය මධ්‍යස්ථානය (Gold Loan Center) වෙත මට අයත් රන් භණ්ඩ උකස් කර භාර දෙනු ලැබේ.</p>
+			<p style="font-size: 9px; margin-top: 0px">I mortagaged and handed over the gold articles owned by me to Gold Loan Center of the LB Finance PLC subject to the terms and conditions mentioned on the next page were read and understood by me shall form a part of this contract.</p>
+		</div>
+		<div class="sign">
+				<table class="sign-table">
+						<thead>
+							<tr>
+								<th class="basic-detail-label" style="font-size:8px; width: 30%; border-top: solid thin; "><span style="font-size: 7px;">තක්සේරු</span>/ Valuer</th>	
+								<th class="basic-detail-label" style="font-size:8px; width: 5%;  "><span style="font-size: 7px;"></th>	
+								<th class="basic-detail-label" style="font-size:8px; width: 30%; border-top: solid thin; "><span style="font-size: 7px;">බලයලත් නිලධාරී</span>/ Authorized Officer</th>	
+								<th class="basic-detail-label" style="font-size:8px; width: 5%; "><span style="font-size: 7px;"></th>	
+								<th class="basic-detail-label" style="font-size:8px; width: 30%; border-top: solid thin; "><span style="font-size: 7px;">ණය ගැනිම්කරු</span>/ Borrower</th>	
+							</tr>
+		
+						</thead>
+					</table>
+		</div>
+	</page>
+
+	<page size="A4">
+			<img class="back" src="./back.jpg" alt="">
+	</page>
+	
 </body>
-</html>
+
+</html>.
